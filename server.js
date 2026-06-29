@@ -57,5 +57,9 @@ app.listen(PORT, () => {
 });
 
 // ─── Initialize WhatsApp ──────────────────────────────────────────────────────
-
-initWhatsApp();
+// Only initialize if WhatsApp group ID is configured
+if (process.env.WHATSAPP_GROUP_ID && process.env.WHATSAPP_GROUP_ID !== 'XXXXXXXXXX@g.us') {
+  initWhatsApp();
+} else {
+  console.log('⚠️  WhatsApp not configured — skipping initialization.');
+}
